@@ -4,16 +4,16 @@ import Control.Concurrent (threadDelay)
 import Control.Monad (join)
 import Graphics.Rendering.OpenGL
 import Graphics.UI.SDL as SDL
--- import EnableGUI
+import EnableGUI
 
 main :: IO ()
 main = do
---  enableGUI
+  enableGUI
   SDL.init [InitEverything]
   _ <- setVideoMode 800 600 24 [HWSurface, DoubleBuf, OpenGL]
-  join setCaption "Arcadia"
+  join setCaption "Arcade"
   render
-  sequence_ $ replicate 1000 eventLoop
+  eventLoop
 
 render :: IO ()
 render = do
@@ -31,6 +31,8 @@ render = do
   glSwapBuffers
 
 eventLoop :: IO ()
-eventLoop = do
-  print =<< SDL.pollEvent
-  threadDelay 10000
+eventLoop = SDL.pollEvent >>= \e -> case e of
+    NoEvent -> k
+    Quit    -> return ()
+    _       -> print e >> k
+  where k = threadDelay 10000 >> eventLoop
