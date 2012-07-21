@@ -1,0 +1,41 @@
+name:          arcade
+category:      Game
+version:       0.1
+license:       BSD3
+cabal-version: >= 1.6
+license-file:  LICENSE
+author:        Edward A. Kmett
+maintainer:    Edward A. Kmett <ekmett@gmail.com>
+stability:     experimental
+homepage:      http://github.com/ekmett/arcade/
+bug-reports:   http://github.com/ekmett/arcade/issues
+copyright:     Copyright (C) 2012 Edward A. Kmett
+synopsis:      Haskell Arcade
+description:   Haskell Arcade
+build-type:    Simple
+extra-source-files: bundle.sh
+
+-- data-files: data/*.png
+
+source-repository head
+  type: git
+  location: git://github.com/ekmett/arcade.git
+
+executable arcade
+  hs-source-dirs: src
+  main-is: HSMain.hs
+  extra-libraries: SDLmain
+  c-sources: src/main.c
+  includes: src/HSMain_stub.h
+
+  other-extensions: ForeignFunctionInterface
+  other-modules: Main
+
+  build-depends:
+    base         == 4.*,
+    containers   >= 0.3   && < 0.6,
+    OpenGL       >= 2.2.3.1 && < 2.6,
+    SDL          >= 0.6.3 && < 0.7,
+    transformers >= 0.2   && < 0.4
+
+  ghc-options: -no-hs-main -Wall
