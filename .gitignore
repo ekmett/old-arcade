@@ -1,2 +1,4 @@
 dist
+data/*.png
+data/*.gif
 .DS_Store
