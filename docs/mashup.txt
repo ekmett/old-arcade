@@ -1,0 +1,460 @@
+Here is an entirely stream of consciousness 'design doc'
+
+how do we deal with the fog of war if we allow the camera to pan out?
+
+Procedurally generated worlds/challenges?
+
+Can we can get pet AIs to run choppers, jets, vehicles, pixies, missile command centers for us? various AIs that know how to do different things?
+
+e.g. fly them in and drop them off and let them take over? or even let one run the flight of gunship controls of the current vehicle!
+
+a smartgun that knows how to fire itself? certain gear/characters might _only_ allow autopilot/autotargeting or may require multiple players to control it.
+
+AI come in many forms, humans, robots, pure AI, smart weapons that use themselves, ships that come with a baked in copilot or even pilot.
+
+multiple players piloting a level boss against autopiloted heroes is pretty bad-ass
+
+Can we get by running a relatively smart AI with simple a* off available controls for 30 frames per second? that covers the actual directional stuff, but nothing
+mouse driven.
+
+extra behavior needed for flocking for NPC AI and for targeting open systems like aiming a mouse. can we use monte carlo for the mouse position/weapon discharge monitoring.
+
+Can we allow the user to write their own AI agents?
+
+We have small people who move from vehicle to vehicle to do stuff in a side-scrolling shmup world.
+
+PLANET SURFACE
+==============
+
+joust/joust 2
+  player bird
+    one hit to kill
+    kills things it lands on
+    kills pterodactyl if the lance hits it in the mouth
+  enemy birds
+  pterodactyl
+    only weak spot is the mouth, otherwise invulnerable. room clearer
+  egg-men
+  lava troll
+  arena-effects
+    spawning pads - creating enemies
+    clearable waves of enemies
+    egg waves
+  the robot knight
+  power-up to turn into the main character into the pegasus, which is heavier
+  variants:
+    what happens if we actually allowed you to control your attitude and added ramps and what not to take off from?
+    then you'd want to control the direction of your lance more. accelerating would lower your lance point. controls like a mix of joust and choplifter?
+    flapping to get lift would leave you with the lance pointed slightly upward, leaning forward to level it would put you moving slightly forward
+    line-rider meats joust? injured birds fall/walk, take time to recover?
+    using mouse could let you point the lance and/or let someone on the back fire arrows!
+  making stats interesting:
+    flapping your wings costs you stamina, eventually you'll need to land.
+    flapping faster costs you more.
+    carrying more people costs more stamina!
+    energy recovery is non-linear, so if you get exhausted you stay exhausted.
+    concussion damage also hits your energy level
+    powering up lengthens lance, reduces how tired you get when you flap?
+    equipping barding makes your bird tougher, but greatly decreases stamina
+    weapons:
+      you can use a bow, in which case you use the bird as a platform and shoot with the mouse, ammo limitations, but slow and steady
+      you can use a lance/shield in which case the left mouse button sets the lance, and the right mouse button uses the shield
+      you can use a gun, in which case you are a genre bending madman with ammo supply issues because you can do a lot of spike damage,
+        but need to get ammo resupplied regularly (birds don't carry much)
+    zombie birds and lancers? if attacked by a zombie you can get an undead bird
+    spirit AI can possess the bird
+    fairy, robot and human AI can sit on the back and control their weapons and/or steer the bird a bit. fairy are light but can't control it well
+      robots have good control but are too heavy, and humans are in the middle. a fairy + spirit controlled bird would be the most agile
+      dedicated control gives you better attitude control.
+
+defender:
+  player:
+    can turn left right, thrust, has a pretty powerful straight line attack, but is a glass cannon.
+    anti-gravity, main gun, shields, thrusters, tractor beam and other systems all draw from capacitors, so you can't run them all
+    two button combat, gives you the main gun and some other system on mouse.
+    hud provides energy allocation between systems leading to a fairly flexible build?
+    secondary pilot lets you run more systems
+    can pick up humans (and other stuff) with the tractor beam
+    computer and robot AI can control the ship and systems
+  classic defender arena effects:
+    humans distributed across world. aliens try to abduct humans, if they succeed in abducting them all you get a mutant wave
+
+choplifter
+  chopper
+    one hit kills
+    but it can shoot down (and slightly up) at angles unlike the defender ship
+    can carry humans
+    landing on the humans actually kill the hostages
+    limited fuel, attitude/altitute guages for hud
+  enemies:
+    jets that fly in left or right, shoot and turn around and fly away
+    tanks that drive and lob shots at the ground
+    anti-aircraft missile bays
+    ship guns
+    caves with lava
+  maps:
+    desert
+    water (land at aircraft carrier)
+  music:
+    air-wolf theme?
+  upgrades:
+    auto-pilot, automatic targeting systems, missile launchers, chaff, surface-air-missiles, hellfire bombs
+  observations:
+    you do have spinning blades overhead, so it wouldn't be good for either of you if a 2 ton ostrich landed on you!
+  secondary pilot gets a 50-cal hanging out the window?
+
+star-wars snowspeeder
+  snowspeeder:
+    like the defender ship, but can't carry humans
+    shoots with shorter blasts
+    can take between 3 and 5 hits from a walker, so it is more resilient
+    when you hear the starwars tune you become invincible for 20 seconds
+    you can repair twice by landing in a valley.
+  ai: robot and computer ai control like the defender?
+
+  enemies:
+    walkers
+      move slowly but they take a lot of hits, walkers can't pass other walkers.
+      it takes 48 hits to kill a walker!
+      when black they are very accurate
+      they can shoot at angles
+      8 shots each to slow the walker down one speed level
+      black, grey, purple, red, yellow
+      from time to time a bomb hatch appears on the walker's body, by hitting it`the walker dies no matter its color
+      you can shoot the projectiles they shoot out of the sky
+    secondary pilot can fire a grappling hook? physics game elements?
+
+gradius:
+  player:
+    one-hit kill
+    can get shields
+    lots of weapon powerups
+    missiles that desend at 45 degrees and troll the ground or ascend at 45 degrees and troll the skies
+    can only one way, side-scroller, often with fixed progression rate
+    but can back up within the frame while maintaining heading
+    second player can obvious fire more bullets.
+
+  mashup opportunities:
+    let other unit types get the waldoes!  defender/choplifter/starwars with waldos
+
+  arena features:
+    lots of rigid terrain tiles you can collide with
+    can't stop moving, this makes the gradius a form of scrapper.
+    boss fights!
+
+  variations:
+    since we have the mouse, we can actually allow for a wider array of shooting angles than gradius did, and we have two weapon buttons.
+  easter eggs:
+    players should be able to cheat for gradius missions, it has the classic konami code
+    up/up/down/down/left/right/left/right/b/a/start can give 30 lives at the start screen but compromise bonuses, experience, etc?
+    up/up/down/down/left/right/left/right/b/a/start during pause can give you two options, missiles, and extra speed once per level
+    a/b/start to get the ability to change music?
+    down/up/b/a/b/a/b/a/start to resume after game over
+
+  parodius:
+    there is a good reason to make some worlds do off-the-wall crap in a gradius setting, this is a nice set up for bizarre boss fights,
+    platformer crossovers, etc.
+
+considerations:
+  gradius, moon patrol, keystone kapers, and galaga all seem to come intrinsically with the notion of inexorable forward advancement or axis alignment?
+  can we dispense with that and make them just general purpose?
+
+Jets
+====
+
+
+Ground Vehicles
+===============
+highways
+
+
+Fixed Placement
+===============
+
+these battles feature destructible terrain (blast walls, dirt mounds, etc?) and waves of invaders.
+
+missile command:
+  player:
+    turret with associated cities
+  enemies:
+    missiles, MIRVs
+    bombs
+    fighter jets
+  mashups:
+    map could be a zoomed out version of the entire defender world or the entire gradius course with incoming missiles being huge
+    alternately this could be a way to defend a middle-sized area. missile command missiles make a credible threat for many units!
+    power up or system that gives you missile command-style firing control from other ships with a limited arsenal or called fire
+    from nearby ground stations.
+    Can be controlled with the mouse while a character without firing abilities is moving and jumping!
+    Should we do pixelwise ground destruction like scorched earth?
+  variants:
+    use the same controls for decorative fireworks with particls rather than a blast radius?
+  second player can fire more missiles
+
+  balance:
+    friendly fire concerns?
+
+scorched earth:
+  player controls the angle of the tank turrent and fires with various missiles that cost money
+    most attacks destroy earth
+    some attacks create earth, some dig, shields for the tank keep you alive from some damage.
+  arena: wind is a big factor
+  variants from the raw game:
+    adapted to real time because of the mashup
+    firing produces heat which slows your firing rate? basic mmo mechanic with non-linear regen, a la swtor sniper?
+  second player in a tank reduces reload time or something? or is there just not enough room
+
+space invaders:
+  player:
+    gun turrent can move left and right and shoot straight up, one hit kills it, shots can damage terrain
+  enemy:
+    space invaders
+      do their characteristic side-to-side march ignoring all geometry
+      one hit kills them, if they reach the bottom of the screen everything dies
+      they can be killed by anyone
+      their shots can damage terrain
+    since moving and shooting can be done with one hand, you can easy control missile defense with the other.
+
+galaga
+  player:
+    ship can move up off the ground a little
+    single or double ship to start with, when a ship is captured you can reclaim it, getting a bigger ship
+  mashups: waldos! ship capturing for other shmups. capturing bunkers from space invaders gives enemies shields!
+
+
+GROUND VEHICLES
+===============
+
+moon patrol:
+  player:
+    tank with guns, shoots up at 45 degrees and to the side
+  arena features:
+    scrapper, can't stop moving, since controls are one handed, can do missile control, etc. with the other hand
+
+rampage:
+  player:
+    can tear down buildings and eat people, can take a lot of damage
+  enemies: various military
+  arena:
+    buildings that can be damaged from the side, with signs and interesting effects
+    bridges
+    trolley cars
+    ability to eat people
+
+  Tools for genre mashing:
+    zombies that can infect other people giving rampagers people to eat while defending other humans
+    rampagers can attack people while you try to kill them with choppers, defenders, jousting birds, etc.
+    smash buildings with the elevator action guy/keystone kapers, etc. in them?
+
+OPEN SPACE
+==========
+
+cross-genre opportunities:
+  missile command: you can have it defend the planet from a 360 degree assault
+  gradius: star control with waldoes!
+  planetary assault: stuff that makes it past the defense here has to be fought off on the planet
+
+asteroids/space war:
+  player:
+    one-hit kill
+    hyperspace warp
+    acceleration-based easy 360 degree movement, no friction in space, some in atmosphere?
+    can shoot pellets fast, but no upgrade room
+
+  enemies:
+    asteroids: dumb splittable vector rocks
+    ufos: bounce in from the side, fairly generic
+
+  mashup opportunities:
+    asteroids heading for earth
+
+star control:
+  player:
+    various ships with different crew levels and balancing models
+    two button controls, already designed around having a planet gravity well in the middle,
+
+bosconian:
+  free 8 directional movement
+  space stations that must be destroyed that have 6 canons in a hexagon
+
+
+PLATFORMERS
+===========
+
+pitfall/pitfall 2
+  player:
+    pitfall harry, gives you a run and a fixed height jump effect, able to climb ladders, swim
+    this is probably the hardest character to play almost _any_ game with, so 
+    ability to swing from ropes
+    one hit to kill
+  logs cost you money
+  open-closing water traps
+  alligators
+  rat (which can push you off the map to the right) (2)
+  bats (flap up and down, wrap on screen edge) (2)
+  electric eel (2)
+  frogs (hop over ladder)
+  gold/gems/etc
+  the scorpion trudges across the underground, invulnerable to harry
+  arena-effect:
+    movement under ground gets you through the world faster. NB: this requires a fixed screen size to play or a portal effect to display properly
+    lowered from the ceiling on the side for next guy
+    platformer get the ability to swing from ropes
+    can duplicate the prng that chase originally used to provide the original pitfall map layout. can we open the world or do something by moving the 3 underground levels
+      into the foreground?
+      tie achievement to collecting all the gold regardless of character?
+    can we render the game through a 2d portal based world to deal with map edges and broken geometry like pitfall's underground areas?
+
+elevator action:
+  player:
+    agent, can enter doors to get dossiers, shoot and duck
+    one hit kills him, but has good horizontal firepower
+  arena:
+    destroyable lights
+    escalators
+    elevators
+    horizontal scrolling
+  enemies:
+    enemy agents, track player & shoot
+   genre mashups:
+     instead of dossiers you can get powerups
+     car at the bottom of the map can be a vehicle.
+     can be climbing the building to get to a helicopter at the top instead of descending to get to a car at the bottom
+     if we mix scales more freely, it can be quite terrifying to be in a building where rampagers can be knocking it down!
+
+keystone kapers
+  player
+    pitfall-harry-like keystone kop
+    one hit kills him
+    can capture an enemy just by running into him.
+  enemies:
+    mostly obstacles, shopping carts, radios, bags of money
+  arena:
+    thief you must catch before he reaches the roof
+  environmental factors:
+    escalators, elevators
+  mashup opportunities:
+    elevator action
+
+dig-dug
+  player:
+    you can move left/right up down ignoring gravity when you are 'underground'
+    you can blow enemies up with a pump and dig
+    one hit to kill
+  rocks fall when not supported immediately below them
+  dragons breath fire to attack
+  enemies can go ethereal and move through the ground to approach the hero if they are ignored too long
+
+bubble bobble:
+  player:
+    bub or bob
+    blow bubbles to capture enemies that then fly up and pop
+    water draining lets you get into parts of the map you otherwise couldn't
+  enemies:
+    various enemies that run around platforms
+    the baron is the clear-timer boss and has no weaknesses
+
+super mario:
+  player: jump and stomp enemies, various powerups to gain flight, ability to shoot, etc.
+  variations:
+    since we have the mouse, the shooting for fireballs, fludd, etc could be directional
+    fludd backpack
+
+super mario 2:
+  player: jump and stand on enemies, push button to lift them up, can throw them.
+    mario     - all-around character
+    luigi     - floatier jumps
+    toadstool - lower jumps, picks stuff up fast
+    princess  - can hover rather than fall at the peak of the jump, very slow lifting
+    various powerups, size increase
+  enemies: koopas, mushrooms, spines, cactus monsters, bullet bill, the koopa brothers, etc. lots of established variety
+  arena components: ice blocks, 
+  genre mashups:
+    with a basic 2d physics engine there isn't any reason why you can't grab crates and throw them, etc.
+
+castlevania:
+  player: guy with a whip
+  variations: since we have the mouse the whipping could be fine grained in the choice of direction
+
+abuse/contra:
+  player:
+    guy with a gun and 360 degree field of fire
+    hud elements: heart-beat that speeds up on taking damage, with separated concussive and lethal this could be a nice mechanic
+  genre mashups:
+    can use most of the weapon types that would come up in a gradius clone.
+  variants:
+
+contra:
+  player:
+    guy with a gun who dies in 2 shots, would limit gun-firing to 45 degree arcs, but give you the ability to lie prone
+    up/up/down/down/left/right/left/right/right mouse/left mouse/space can give 9 lives but compromise bonuses, experience, etc?
+
+pixie:
+  player: mouse controlled pixie that can do healing or draw fire?
+  variants: since this is entirely mouse controlled, the user could use this for support while controlling a simpler character, as with missile command
+
+spelunky:
+  can pick up and throw almost anything, shopkeepers you can rob, bombs, open source project to skim using game maker
+
+braid:
+  player:
+    the time keeper: when running a group mission, some platformers will be *hard*, it may make sense to let one person rewind time as in braid, perhaps with an
+    item? perhaps by possessing the time keeper character who has this power? he doesn't jump high and leaves the mouse free so can play fairy or provide missile
+    command/fire support
+  variants: this can genre bend to other game types very easily
+
+TOP DOWN
+========
+
+centipede
+robotron
+geometry war
+samurai (sword/bow, axis aligned movement, upgraded to two buttons on the mouse?)
+
+
+ABSTRACT
+========
+
+breakout:
+  player:
+    paddle and ball with powerups, paddle is invulnerable
+  arena: place breakable bricks on the level that must be cleared
+  grabbing control of the paddle unleashes the ball. when you run out of balls the paddle goes dark, but you can still move it side-to-side
+  potentially useful as a player-controlled platform
+
+
+DDR:
+  player: pretty much anything where you can press a few buttons
+  arena: show the buttons to mash, probably in time to the music
+  mashups: only takes one hand, so you can do mouse control games with the other. missile command/ddr?
+
+
+If we distinguish between concussion and killing damage we can make for a wider-array of game-play options, at the expense of more complexity
+  the bottom of the jousting bird can concuss, while the lance tip is designed to kill
+  the blaster shots from the defender are designed to kill
+  pitfall harry takes all concussion damage by kneeling and losing money
+  dig-dug's pump is concussive until the third pump
+  in an MMO setting it makes sense to heal from concussive damage over time
+  concussion to the bird head could stun it, losing it the ability to flap its wings for a few seconds. (little birds flying overhead?)
+
+We can add material properties for opengl lighting purposes:
+  ambient, diffuse, specular, emission maps, surface normals to pixel art to go with the collision maps
+  this would let us light the models better
+
+YASD/have a nice death reporting, it'd be nice to say why you died when you do, and to give some kind of anecdotal blurb. that way we can track them
+ghost files to see your previous characters again? random levels?
+
+how to deal with differences in scale?
+
+Do we zoom out when we go to deal with choplifter and defender sprites?
+
+Fog of war and map?
+
+Camera control is a function of the current 'game', so its determined by the server.
+
+What if we place multiple controllable characters on the map, and let you switch with the mouse to another character as long as it isn't currently inhabited.
+
+Uninhabited characters would sit idle or could be configured with an AI. Then your goal is to progress through the map, switching into the body of a character you need to move
+around.
+
+Consider: starting the level flying over in the defender shuttle, clearing the area of aliens that are trying to abduct the humans, landing it, getting out as pitfall harry, running across the lagoon to get some gold, switching into dig-dug to explore the mines underneath, reaching the surface, taking to the air in a joust bird, extra-lives you have are just that, extra-lives for a given character type, each tracked separately.

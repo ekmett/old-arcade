@@ -12,30 +12,44 @@ bug-reports:   http://github.com/ekmett/arcade/issues
 copyright:     Copyright (C) 2012 Edward A. Kmett
 synopsis:      Haskell Arcade
 description:   Haskell Arcade
-build-type:    Simple
-extra-source-files: bundle.sh
-
--- data-files: data/*.png
+build-type:    Custom
 
 source-repository head
   type: git
   location: git://github.com/ekmett/arcade.git
 
-executable arcade
+library
   hs-source-dirs: src
+  exposed-modules:
+    Arcade.Game
+
+executable arcade-server
+  hs-source-dirs: server src
+  main-is: Server.hs
+  other-extensions: ForeignFunctionInterface
+  other-modules: Main
+  build-depends:
+    base == 4.*
+    containers >= 0.3 && < 0.6,
+    transformers >= 0.2 && < 0.4
+  gh-options: -Wall -threaded -fwarn-tabs
+
+executable Arcade
+  hs-source-dirs: client src
   main-is: HSMain.hs
   extra-libraries: SDLmain
-  c-sources: src/main.c
-  includes: src/HSMain_stub.h
+  c-sources: client/main.c
+  includes: client/HSMain_stub.h
 
   other-extensions: ForeignFunctionInterface
   other-modules: Main
 
   build-depends:
     base         == 4.*,
+    cabal-macosx >= 0.2.2 && < 0.3,
     containers   >= 0.3   && < 0.6,
     OpenGL       >= 2.2.3.1 && < 2.6,
     SDL          >= 0.6.3 && < 0.7,
     transformers >= 0.2   && < 0.4
 
-  ghc-options: -no-hs-main -Wall
+  ghc-options: -no-hs-main -Wall -threaded -fwarn-tabs
