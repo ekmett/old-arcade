@@ -1,0 +1,3 @@
+module Arcade.Game
+  (
+  ) where

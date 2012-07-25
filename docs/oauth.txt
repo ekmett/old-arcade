@@ -1,0 +1,60 @@
+[Update: Sadly, this won't work, as the state token we pass in isn't baked into the access_token or refresh_token, see README.markdown for a design
+that uses separate login servers.]
+
+How to deal with authentication/authorization?
+
+We want a way that the user can start the arcade at the beginning of the day, enter a password once and connect to a bunch of servers without risking one of them impersonating him.
+
+We have a number of web servers involved in the arcade model:
+
+You have a local web server baked into the arcade client, which can perform some authentication/authorization for the user.
+
+We have a number of agents involved in the transaction
+
+The User sitting at his computer
+
+       Browser ------
+      /   |   \           \
+ User - Client - Server - Provider
+
+The goal is that the user authenticates in the browser for his client once at the start of the session.
+
+Ideally we should use an arbitrary OpenID provider to provide the login, that removes a signup step.
+
+But how do we pass the OpenID session from the Client that did the initial login to subsequent servers in a
+way that prevents them from impersonating the user.
+
+
+Use OpenID as a global notion of identity across servers. We can ask for the user name for display purposes and an email address to hash to get a gravatar. This means we don't have to deal with central authorization.
+
+Use OAuth to get permission to command/control a remote server?
+
+https://accounts.google.com/o/oauth2/auth?response_type=token&
+
+We can make a public/private key pair, and then with a hash of the public key we can send the user to:
+
+https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=<publickeyhash>&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fgoogle-oauth-login&response_type=code&client_id=866865470933.apps.googleusercontent.com
+
+which will redirect to something like
+
+http://localhost:8000/oauth-callback?state=<publickeyhash>&code=<responsecode>
+
+We can exchange the code with an HTTP post to google for an access token
+
+post to http://accounts.google.com/o/oauth2/token
+
+code=<responsecode>&
+client_id=866865470933.apps.googleusercontent.com&
+client_secret=U-sfVsWKtUpfyAjgPEwbk_1_&
+redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fgoogle-oauth-login&
+grant_type=authorization_code
+
+this will reply with a JSON string containing the access and refresh tokens
+
+{
+  "access_token" : "1/fFAGRNJru1FTz70BzhT3Zg"
+  "refresh_token" : "1/xEoDL4iW3cxlI7yDbSRFYNG01kVKM2C-259HOF2aQbI"
+  "expires_in" : <...>   // a time in seconds
+  "token_type" : "Bearer"
+}
+

@@ -8,4 +8,4 @@
 > main = defaultMainWithHooks simpleUserHooks { postBuild = appBundleBuildHook apps }
 
 > apps :: [MacApp]
-> apps = [MacApp "Arcade" (Just "resources/Arcade.icns") Nothing [] [] DoNotChase ]
+> apps = [MacApp "arcade" (Just "resources/Arcade.icns") Nothing [] [] DoNotChase ]
